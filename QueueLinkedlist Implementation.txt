@@ -1,0 +1,121 @@
+package QueueLinkedlist.com;
+
+class Node 
+{
+	int data;
+	Node next;
+	
+}
+class Qqlinked
+{
+	Node front;
+	Node rear;
+	int size;
+	
+	public Node getNewNode(int val)
+	{
+		Node a=new Node();
+		a.data=val;
+		a.next=null;
+		return a;
+	}
+	public void EnQueue(int val)
+	{
+		if(rear==null)
+		{
+			front=rear=getNewNode(val);
+			size++;
+			return;
+		}
+		size++;
+		rear.next=getNewNode(val);
+		rear=rear.next;
+	}
+	public boolean isEmpty()
+	{
+		if(rear==null)
+		{
+			return true;
+		}
+		return false;
+	}
+	public int Dequeue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Empty.Nothing Dequeue");
+			return Integer.MIN_VALUE;
+		}
+		size--;
+		int t=front.data;
+		front=front.next;
+		if(front==null)
+		{
+			rear=null;
+		}
+		return t;
+	}
+	public int getSize()
+	{
+		return size;
+	}
+	public int getFront()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Empty.Nothing ar Front");
+			return Integer.MIN_VALUE;
+		}
+		return front.data;
+	}
+	public int getRear()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Empty.Nothing at Rear");
+			return Integer.MIN_VALUE;
+		}
+		return rear.data;
+	}
+}
+
+public class Qlinked {
+
+	public static void main(String[] args)
+	{
+		Qqlinked q=new Qqlinked();
+		q.EnQueue(11);
+		q.EnQueue(22);
+		q.EnQueue(33);
+		q.EnQueue(44);
+		q.EnQueue(55);
+		q.EnQueue(66);
+		//inailly 
+		System.out.println("Size:"+q.getSize());
+		System.out.println("Front:"+q.getFront());
+		System.out.println("Rear:"+q.getRear());
+		
+		System.out.println("Removed Element:"+q.Dequeue());
+		//first Element Removed e.g 11 is Removed Know front is 22 and Decrease size to 5 
+		System.out.println("Size:"+q.getSize());
+		System.out.println("Front:"+q.getFront());
+		System.out.println("Rear:"+q.getRear());
+		
+		q.EnQueue(77);//new Adding Element in the list know Rear is 77 and again size is 6
+		
+		System.out.println("Size:"+q.getSize());
+		System.out.println("Front:"+q.getFront());
+		System.out.println("Rear:"+q.getRear());
+		System.out.println("-------------------");
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("Removed Element:"+q.Dequeue());
+		System.out.println("-----------------------------");
+		System.out.println("Removed Element:"+q.Dequeue());
+
+	}
+
+}
